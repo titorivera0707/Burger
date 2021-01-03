@@ -1,9 +1,10 @@
 const express = require("express");
-const burger = require("../models/burger");
+const burger = require("../models/burger.js");
 
 var router = express.Router();
 
 router.get("/", function(req, res) {
+    console.log("hello")
     burger.selectAll(function(data) {
       var hbsObject = {
         burgers: data
@@ -14,7 +15,8 @@ router.get("/", function(req, res) {
   });
   
   router.post("/api/burgers", function(req, res) {
-    burger.insertOne(["name", "sleepy"], [req.body.name, req.body.sleepy], function(result) {
+    console.log(req)
+    burger.insertOne(["burger_name"], [req.body.name], function(result) {
       // Send back the ID of the new quote
       res.json({ id: result.insertId });
     });
@@ -27,7 +29,7 @@ router.get("/", function(req, res) {
   
     burger.updateOne(
       {
-        sleepy: req.body.sleepy
+        devoured: true
       },
       condition,
       function(result) {
