@@ -22,6 +22,6 @@
     "express-handlebars": "^5.2.0",
     "heroku": "^7.47.6",
     "mysql": "^2.18.1",
-    "node": "^15.4.0"
+    "node": "15.x"
   }
 }
